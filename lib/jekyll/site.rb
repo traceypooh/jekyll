@@ -328,11 +328,11 @@ module Jekyll
     # Returns
     def relative_permalinks_are_deprecated
       if config["relative_permalinks"]
-        Jekyll.logger.abort_with "Since v3.0, permalinks for pages" \
-                                 " in subfolders must be relative to the" \
-                                 " site source directory, not the parent" \
-                                 " directory. Check https://jekyllrb.com/docs/upgrading/"\
-                                 " for more info."
+        Jekyll.logger.abort_with "Since v3.0, permalinks for pages " \
+                                 "in subfolders must be relative to the " \
+                                 "site source directory, not the parent " \
+                                 "directory. Check https://jekyllrb.com/docs/upgrading/ " \
+                                 "for more info."
       end
     end
 
@@ -360,9 +360,13 @@ module Jekyll
     end
 
     def each_site_file
+      seen_files = []
       %w(pages static_files_to_write docs_to_write).each do |type|
         send(type).each do |item|
+          next if seen_files.include?(item)
+
           yield item
+          seen_files << item
         end
       end
     end
@@ -536,8 +540,8 @@ module Jekyll
         if config["theme"].is_a?(String)
           Jekyll::Theme.new(config["theme"])
         else
-          Jekyll.logger.warn "Theme:", "value of 'theme' in config should be " \
-          "String to use gem-based themes, but got #{config["theme"].class}"
+          Jekyll.logger.warn "Theme:", "value of 'theme' in config should be String to use " \
+                                       "gem-based themes, but got #{config["theme"].class}"
           nil
         end
     end

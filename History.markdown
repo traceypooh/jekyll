@@ -69,6 +69,8 @@
   * Remove Ionic Framework site from showcase (#9057)
   * Windows: describe which option to choose (#9049)
   * Improve links (http -&gt; https) (#9064)
+  * Update ruby version for macos guide (#9086)
+  * Update posts.md (#9151)
 
 ### Bug Fixes
 
@@ -87,6 +89,8 @@
   * Only enable BOM encoding option on UTF encodings (#8363)
   * Ensure theme config is a `Jekyll::Configuration` object (#8988)
   * Remove misleading totals row from `--profile` table (#9039)
+  * Unlock Psych dependency (#9135)
+  * Fix false positive conflicts for static files in a collection (#9141)
 
 ### Development Fixes
 
@@ -110,6 +114,11 @@
   * Stop testing with Rubies older than 2.7 on non-Windows  (#8955)
   * Bump actions/checkout from 2 to 3 (#8986)
   * Remove git.io shortlinks from repo (#9045)
+  * Bump rubocop to 1.32 (#9093)
+  * Bump RuboCop to `1.36.x` (#9125)
+  * Use check-spelling/check-spelling@v0.0.20 (#9111)
+  * Disable pending cops when running rubocop (#9136)
+  * Relax RDoc version dependency (#9142)
 
 ### Minor Enhancements
 
@@ -125,6 +134,10 @@
   * Expose collection static files via `site.static_files` (#8961)
   * Expose `basename` from `document.rb` as `name` to Liquid templates (#8761)
   * Allow Configurable Converters on CSV (#8858)
+  * Introduce `theme` drop to expose theme-gem details (#9129)
+  * Relax version constraint to allow Rouge 4.x (#9134)
+  * Incrementally rebuild when a data file is changed (#8771)
+  * Support jekyll-sass-converter 3.x (#9132)
 
 ### Site Enhancements
 
