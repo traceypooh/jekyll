@@ -278,6 +278,13 @@ module Jekyll
       path = destination(dest)
       FileUtils.mkdir_p(File.dirname(path))
       Jekyll.logger.debug "Writing:", path
+
+      if relative_path.end_with?('.md') || relative_path.end_with?('.markdown')
+        filecopy = File.dirname(path) + '/' + File.basename(path, ".html") + ".md"
+        Jekyll.logger.debug "Writing COPY:", filecopy # dest, FQ
+        File.write(filecopy, File.read(relative_path, :mode => "rb"), :mode => "wb")
+      end
+
       File.write(path, output, :mode => "wb")
 
       trigger_hooks(:post_write)
